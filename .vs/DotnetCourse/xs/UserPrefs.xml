@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{F8528F9F-7C59-4F01-A8F4-52F628AF696E}|https">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ProductController.cs">
+    <Files>
+      <File FileName="Program.cs" Line="12" Column="40" />
+      <File FileName="Controllers/ProductController.cs" Line="42" Column="1" />
+      <File FileName="Controllers/WeatherForecastController.cs" Line="8" Column="2" NotebookId="1" />
+      <File FileName="WeatherForecast.cs" Line="3" Column="14" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="DotnetCourse" expanded="True" selected="True">
+            <Node name="DotnetCourse" expanded="True">
+              <Node name="Controllers" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.DotnetCourse PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
