@@ -1,41 +1,30 @@
 using Microsoft.AspNetCore.Mvc;
-
-namespace Desktop.Controllers;
-
-public class Product
-{
-    public string Name { get; set; }
-}
+using DotnetCourse.Models;
+namespace DotnetCourse.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-
-//private
-//protected
 public class ProductController : ControllerBase
 {
-
-    [HttpGet(Name = "GetProduct")]
-    public Product Get()
+  
+    [HttpGet("GetProduct")]
+    public Product GetProductDetails()
     {
+        var product = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
+        return product;
+    }
 
-        var product = new Product
-        {
-            Name = "Hotel A",
-        };
+    [HttpGet("GetProducts")]
+    public List<Product> GetProducts()
+    {
+        var a = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
+        var b = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
 
         var products = new List<Product>
         {
-            new Product
-            {
-                Name = "Hotel A"
-            },
-            new Product
-            {
-                Name = "Hotel B"
-            }
+            a, b
         };
 
-        return product;
+        return products;
     }
 }
