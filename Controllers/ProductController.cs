@@ -1,30 +1,48 @@
 using Microsoft.AspNetCore.Mvc;
 using DotnetCourse.Models;
+using DotnetCourse.Interfaces;
+using DotnetCourse.Services;
+
 namespace DotnetCourse.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class ProductController : ControllerBase
 {
-  
-    [HttpGet("GetProduct")]
-    public Product GetProductDetails()
+
+    private readonly IProductService _productService;
+
+    public ProductController(IProductService productService)
     {
-        var product = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-        return product;
+        _productService = productService;
+    }
+
+
+    [HttpGet("GetProduct")]
+    public Product GetProductDetails(Guid id)
+    {
+        try
+        {
+            var data = _productService.GetProduct(id);
+            return data;
+        }
+        catch(Exception exception)
+        {
+            throw new Exception (exception.ToString());
+        }
     }
 
     [HttpGet("GetProducts")]
     public List<Product> GetProducts()
     {
-        var a = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-        var b = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-
-        var products = new List<Product>
+        try
         {
-            a, b
-        };
-
-        return products;
+            var data = _productService.GetAllProducts();
+            return data;
+        }
+        catch (Exception exception)
+        {
+            throw new Exception(exception.ToString());
+        }
     }
 }

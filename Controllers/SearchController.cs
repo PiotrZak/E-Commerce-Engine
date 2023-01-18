@@ -1,4 +1,5 @@
-﻿using DotnetCourse.Models;
+﻿using DotnetCourse.Interfaces;
+using DotnetCourse.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace DotnetCourse.Controllers;
 
@@ -6,30 +7,41 @@ namespace DotnetCourse.Controllers;
 [Route("[controller]")]
 public class SearchController : ControllerBase
 {
+
+    private readonly IProductService _productService;
+
+    public SearchController(IProductService productService)
+    {
+        _productService = productService;
+    }
+
     [HttpGet("Search")]
     public List<Product> SearchProduct(string searchPhrase)
     {
-        var a = new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-        var b = new Product("Novotel", "Warsaw, Amsterdam", 29, 4.8);
-
-        var products = new List<Product>
+        try
         {
-            a, b
-        };
-
-        var findProduct = products.Find(x => x.Name.Contains(searchPhrase));
-        var matchingProduct = new List<Product>
+            var data = _productService.GetSearchProducts(searchPhrase);
+            return data;
+        }
+        catch (Exception exception)
         {
-            findProduct ?? new Product("Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8)
-        };
-
-        return matchingProduct;
+            throw new Exception(exception.ToString());
+        }
     }
 
     [HttpPost("Filter")]
-    public ProductFilters FilterProducts(ProductFilters productFilters)
+    public List<Product> FilterProducts(ProductFilters productFilters)
     {
-        return productFilters;
+
+        try
+        {
+            var data = _productService.GetFilteredProducts(productFilters);
+            return data;
+        }
+        catch (Exception exception)
+        {
+            throw new Exception(exception.ToString());
+        }
     }
 
 }

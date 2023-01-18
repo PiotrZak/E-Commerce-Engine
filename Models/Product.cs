@@ -3,14 +3,17 @@ namespace DotnetCourse.Models
 {
     public class Product
     {
-        public Product(string name, string location, decimal price, double rating)
+        public Product(Guid id, string name, string location, decimal price, double rating)
         {
+            Id = id;
             Name = name;
             Location = location;
             Price = price;
             Rating = rating;
         }
 
+
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
         public decimal Price { get; set; }
