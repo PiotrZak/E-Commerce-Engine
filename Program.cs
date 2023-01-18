@@ -1,6 +1,7 @@
 using DotnetCourse.Interfaces;
+using DotnetCourse.Queries;
 using DotnetCourse.Services;
-
+using Microsoft.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +14,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IProductService, ProductService>();
-
-
+builder.Services.AddScoped<IProductQueries, ProductQueries>();
 
 var app = builder.Build();
 

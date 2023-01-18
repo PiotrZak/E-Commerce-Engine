@@ -6,10 +6,12 @@ namespace DotnetCourse.Services
 {
 	public class ProductService : IProductService
 	{
-		public ProductService()
-		{
-		}
+        public IProductQueries _productQueries;
 
+        public ProductService(IProductQueries productQueries)
+        {
+            _productQueries = productQueries;
+        }
         //Queries
         public List<Product> GetAllProducts()
         {
@@ -39,10 +41,8 @@ namespace DotnetCourse.Services
 
         public Product GetProduct(Guid id)
         {
-
-
-     
-            var product = new Product(new Guid(), "Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
+            var connectionString = _productQueries.GetProduct(id);
+            var product = new Product(new Guid(), connectionString, "Paris, Amsterdam", 29, 4.8);
 
             // execute Query -> connect to database 
             return product;
