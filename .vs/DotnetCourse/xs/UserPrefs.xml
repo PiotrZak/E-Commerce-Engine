@@ -1,28 +1,31 @@
 ﻿<Properties StartupConfiguration="{F8528F9F-7C59-4F01-A8F4-52F628AF696E}|https">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ProductController.cs">
+  <MonoDevelop.Ide.ItemProperties.DotnetCourse PreferredExecutionTarget="/Applications/Safari.app" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/SearchController.cs">
     <Files>
       <File FileName="Program.cs" Line="12" Column="40" />
-      <File FileName="Controllers/ProductController.cs" Line="42" Column="1" />
-      <File FileName="Controllers/WeatherForecastController.cs" Line="8" Column="2" NotebookId="1" />
-      <File FileName="WeatherForecast.cs" Line="3" Column="14" NotebookId="1" />
+      <File FileName="Controllers/ProductController.cs" Line="13" Column="30" />
+      <File FileName="Controllers/WeatherForecastController.cs" Line="21" Column="43" />
+      <File FileName="Models/Product.cs" Line="11" Column="15" />
+      <File FileName="Controllers/SearchController.cs" Line="26" Column="32" />
+      <File FileName="Models/ProductFilters.cs" Line="20" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="DotnetCourse" expanded="True" selected="True">
+          <Node name="DotnetCourse" expanded="True">
             <Node name="DotnetCourse" expanded="True">
               <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.DotnetCourse PreferredExecutionTarget="/Applications/Safari.app" />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

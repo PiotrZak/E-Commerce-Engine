@@ -465,11 +465,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/macbook/Desktop/Project/DotnetCourse.csproj",
-      "projectName": "DotnetCourse",
-      "projectPath": "/Users/macbook/Desktop/Project/DotnetCourse.csproj",
+      "projectUniqueName": "/Users/macbook/Desktop/DotnetCourse/DotnetCourse.csproj",
+      "projectName": "Desktop",
+      "projectPath": "/Users/macbook/Desktop/DotnetCourse/DotnetCourse.csproj",
       "packagesPath": "/Users/macbook/.nuget/packages/",
-      "outputPath": "/Users/macbook/Desktop/Project/obj/",
+      "outputPath": "/Users/macbook/Desktop/DotnetCourse/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/macbook/.nuget/NuGet/NuGet.Config"
