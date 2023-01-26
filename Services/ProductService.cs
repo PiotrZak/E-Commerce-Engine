@@ -12,59 +12,31 @@ namespace DotnetCourse.Services
         {
             _productQueries = productQueries;
         }
-        //Queries
+
+
+        public Product GetProduct(Guid id)
+        {
+            var product = _productQueries.GetProduct(id);
+            return product;
+        }
+
+
         public List<Product> GetAllProducts()
         {
-            var a = new Product(new Guid(), "Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-            var b = new Product(new Guid(), "Novotel", "Warsaw, Amsterdam", 29, 4.8);
-
-            var products = new List<Product>
-            {
-                a, b
-            };
-
+            var products = _productQueries.GetAllProducts();
             return products;
         }
 
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {
-            var a = new Product(new Guid(), "Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-            var b = new Product(new Guid(), "Novotel", "Warsaw, Amsterdam", 29, 4.8);
-
-            var products = new List<Product>
-            {
-                a, b
-            };
-
+            var products = _productQueries.GetFilteredProducts();
             return products;
-        }
-
-        public Product GetProduct(Guid id)
-        {
-            var connectionString = _productQueries.GetProduct(id);
-            var product = new Product(new Guid(), connectionString, "Paris, Amsterdam", 29, 4.8);
-
-            // execute Query -> connect to database 
-            return product;
         }
 
         public List<Product> GetSearchProducts(string searchPhrase)
         {
-            var a = new Product(new Guid(), "Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8);
-            var b = new Product(new Guid(), "Novotel", "Warsaw, Amsterdam", 29, 4.8);
-
-            var products = new List<Product>
-            {
-                a, b
-            };
-
-            var findProduct = products.Find(x => x.Name.Contains(searchPhrase));
-            var matchingProducts = new List<Product>
-            {
-                findProduct ?? new Product(new Guid(), "Emeralda De Hotel", "Paris, Amsterdam", 29, 4.8)
-            };
-
-            return matchingProducts;
+            var products = _productQueries.GetSearchProducts();
+            return products;
 
         }
     }
