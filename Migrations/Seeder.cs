@@ -25,7 +25,7 @@ public class ProductSeeder
         var products = new List<Product>();
         var random = new Random();
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 1000; i++)
         {
             var id = Guid.NewGuid();
             var name = _names[random.Next(_names.Length)];

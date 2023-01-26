@@ -29,13 +29,13 @@ namespace DotnetCourse.Services
 
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {
-            var products = _productQueries.GetFilteredProducts();
+            var products = _productQueries.GetFilteredProducts(filteredProduct);
             return products;
         }
 
         public List<Product> GetSearchProducts(string searchPhrase)
         {
-            var products = _productQueries.GetSearchProducts();
+            var products = _productQueries.GetSearchProducts(searchPhrase);
             return products;
 
         }

@@ -7,8 +7,8 @@ namespace DotnetCourse.Interfaces
 	{
         Product GetProduct(Guid id);
         List<Product> GetAllProducts();
-        List<Product> GetFilteredProducts();
-        List<Product> GetSearchProducts();
+        List<Product> GetFilteredProducts(ProductFilters filteredProduct);
+        List<Product> GetSearchProducts(string searchPhrase);
 
     }
 }
