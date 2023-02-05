@@ -20,7 +20,7 @@ namespace DotnetCourse.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string MainImageUrl { get; set; }
-        public string ImageUrls { get; set; } // serialized string
+        public string ImageUrls { get; set; }
         public string Location { get; set; }
         public decimal Price { get; set; }
         public double Rating { get; set; }

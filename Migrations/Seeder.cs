@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DotnetCourse.Models;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 
 public class ProductSeeder
 {
@@ -20,17 +23,47 @@ public class ProductSeeder
     private static readonly string[] _locations = { "Paris", "New York", "London", "Tokyo", "Sydney" };
     private static readonly string[] _imageUrls = { "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg" };
 
-    public static List<Product> Seed()
+    public static async Task<List<Product>> SeedAsync()
     {
+        var builder = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddEnvironmentVariables();
+
+        IConfiguration config = builder.Build();
+
+        var instanceOfClass = new UnsplashAPI(config);
+
+        var mainImagesUrls = await instanceOfClass.GetUnsplashImageByQuery("hotel", 100);
+
+        // mix that to every Product consist on of the food, room, attraction.
+        var foodImagesUrls = await instanceOfClass.GetUnsplashImageByQuery("food", 100);
+        var roomImagesUrls = await instanceOfClass.GetUnsplashImageByQuery("room", 100);
+        var attractionsImagesUrls = await instanceOfClass.GetUnsplashImageByQuery("attractions", 100);
+
+        //System.Collections.Generic.List`1[System.String]
+        Console.WriteLine(mainImagesUrls);
+
+        foreach (var image in mainImagesUrls)
+        {
+            Console.WriteLine(image);
+        }
+
+        // mainImagesUrls[0]
+        // mainImagesUrls[1]
+        // mainImagesUrls[2]
+
+        // in the 87 iteration:
+        // mainImagesUrls[87]
+
         var products = new List<Product>();
         var random = new Random();
 
-        for (int i = 0; i < 1000; i++)
+        for (int i = 0; i < 100; i++)
         {
             var id = Guid.NewGuid();
             var name = _names[random.Next(_names.Length)];
-            var mainImageUrl = "main" + _imageUrls[random.Next(_imageUrls.Length)];
-            var imageUrls = _imageUrls.Select(x => x).ToString();
+            var mainImageUrl = mainImagesUrls[i];
+            var imageUrls = foodImagesUrls[i] + " " + roomImagesUrls[i] + "" + attractionsImagesUrls[i];
             var location = _locations[random.Next(_locations.Length)];
             var price = random.Next(100, 500);
             var rating = random.NextDouble() * 5;

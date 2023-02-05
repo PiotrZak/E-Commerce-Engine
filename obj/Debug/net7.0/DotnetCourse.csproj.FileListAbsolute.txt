@@ -75,3 +75,4 @@
 /Users/macbook/Desktop/DotnetCourse/obj/Debug/net7.0/DotnetCourse.pdb
 /Users/macbook/Desktop/DotnetCourse/obj/Debug/net7.0/ref/DotnetCourse.dll
 /Users/macbook/Desktop/DotnetCourse/bin/Debug/net7.0/Dapper.dll
+/Users/macbook/Desktop/DotnetCourse/bin/Debug/net7.0/Newtonsoft.Json.dll

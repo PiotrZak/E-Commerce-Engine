@@ -5,6 +5,7 @@ using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
 using Microsoft.Data.SqlClient;
 using static System.Collections.Specialized.BitVector32;
+using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace DotnetCourse.Queries
 {
@@ -50,45 +51,42 @@ namespace DotnetCourse.Queries
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            var sql = "SELECT * FROM dbo.Products";
+            var sql = "SELECT * FROM dbo.Products ";
 
-            var location = filteredProduct.Location;
-            var priceFrom = filteredProduct.PriceFrom;
-            var priceTo = filteredProduct.PriceTo;
-            var rating = filteredProduct.Rating;
+            var filteredParameters = new DynamicParameters();
 
-            var filteredParameters = new { };
-
-            if (location != null || priceFrom != null || priceTo != null || rating != null)
+            if (filteredProduct.Location != null || filteredProduct.PriceFrom != null || filteredProduct.PriceTo != null || filteredProduct.Rating != null)
             {
-                sql += "WHERE";
+                sql += "WHERE Id IS NOT NULL ";
             }
 
-            if (location != null)
+            if (filteredProduct.Location != null)
             {
-                sql += "AND Location = @location";
+                sql += "AND Location = @location ";
+                filteredParameters.Add("location", filteredProduct.Location);
             }
 
 
-            if (priceFrom != null)
+            if (filteredProduct.PriceFrom != null)
             {
-                sql += "AND Price > @PriceFrom";
+                sql += "AND Price > @PriceFrom ";
+                filteredParameters.Add("PriceFrom", filteredProduct.PriceFrom);
             }
 
 
-            if (priceTo != null)
+            if (filteredProduct.PriceTo != null)
             {
-                sql += "AND Price < @PriceTo";
+                sql += "AND Price < @PriceTo ";
+                filteredParameters.Add("PriceTo", filteredProduct.PriceTo);
             }
 
 
-            if (rating != null)
+            if (filteredProduct.Rating != null)
             {
-                sql += "AND Rating = @Rating";
+                sql += "AND Rating = @Rating ";
+                filteredParameters.Add("Rating", filteredProduct.Rating);
             }
 
-
-            // Incorrect syntax exception
             var products = con.Query<Product>(sql, filteredParameters).ToList();
 
             return products;
@@ -100,6 +98,12 @@ namespace DotnetCourse.Queries
 
             using var con = new SqlConnection(connectionString);
             con.Open();
+
+            // todo
+            //System.Exception: Microsoft.Data.SqlClient.SqlException(0x80131904): Incorrect syntax near the keyword 'LIKE'.
+            // Unclosed quotation mark after the character string '%@searchPhrase%'.
+
+            // modify that query
 
             var sql = "SELECT * FROM dbo.ProductsWHERE Name LIKE '%@searchPhrase%' OR Location LIKE '%@searchPhrase%";
 

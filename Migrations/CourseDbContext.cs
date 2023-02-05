@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using DotnetCourse.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,10 +14,11 @@ namespace DotnetCourse.Migrations
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            Debugger.Launch();
             modelBuilder.Entity<Product>();
 
             // SEED Data
-            var products = ProductSeeder.Seed();
+            var products = ProductSeeder.SeedAsync().Result;
             modelBuilder.Entity<Product>().HasData(products);
         }
     }
