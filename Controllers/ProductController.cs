@@ -23,7 +23,18 @@ public class ProductController : ControllerBase
     {
         try
         {
+            if (String.IsNullOrEmpty(id.ToString()))
+            {
+                throw new Exception("Id is empty");
+            };
+
             var data = _productService.GetProduct(id);
+
+            if (data == null)
+            {
+                throw new Exception("There isn't products for this id");
+            };
+
             return data;
         }
         catch(Exception exception)

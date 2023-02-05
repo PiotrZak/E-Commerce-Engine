@@ -1,10 +1,18 @@
 using DotnetCourse.Interfaces;
+using DotnetCourse.Migrations;
+using DotnetCourse.Queries;
 using DotnetCourse.Services;
-
+using Microsoft.AspNetCore;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var connectionString = builder.Configuration["ConnectionStrings:DBConnection"];
+
+// Register your DbContext
+builder.Services.AddDbContext<CourseDbContext>(options =>
+    options.UseSqlServer(connectionString));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -13,8 +21,7 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddScoped<IProductService, ProductService>();
-
-
+builder.Services.AddScoped<IProductQueries, ProductQueries>();
 
 var app = builder.Build();
 
