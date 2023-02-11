@@ -30,7 +30,27 @@ namespace DotnetCourse.Services
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {
             var products = _productQueries.GetFilteredProducts(filteredProduct);
-            return products;
+            var sortedProduct = new List<Product>();
+
+
+            // Define user Story
+            //if (filteredProduct.SortBy == SortProperty.ByPopularity)
+            //{
+            //    sortedProduct.OrderByDescending(x => x.Price);
+            //}
+
+            if (filteredProduct.SortBy == SortProperty.ByHighestPrice)
+            {
+                sortedProduct = products.OrderByDescending(x => x.Price).ToList();
+            }
+
+            if (filteredProduct.SortBy == SortProperty.ByLowestPrice)
+            {
+                sortedProduct = products.OrderBy(x => x.Price).ToList();
+            }
+
+
+            return sortedProduct;
         }
 
         public List<Product> GetSearchProducts(string searchPhrase)
