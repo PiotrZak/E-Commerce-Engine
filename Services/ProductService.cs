@@ -30,8 +30,13 @@ namespace DotnetCourse.Services
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {
             var products = _productQueries.GetFilteredProducts(filteredProduct);
-            var sortedProduct = new List<Product>();
 
+            if (filteredProduct.SortBy == null)
+            {
+                return products;
+            }
+
+            var sortedProduct = new List<Product>();
 
             // Define user Story
             //if (filteredProduct.SortBy == SortProperty.ByPopularity)
@@ -48,7 +53,6 @@ namespace DotnetCourse.Services
             {
                 sortedProduct = products.OrderBy(x => x.Price).ToList();
             }
-
 
             return sortedProduct;
         }
