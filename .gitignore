@@ -475,3 +475,5 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+obj/Debug/net7.0/DotnetCourse.csproj.AssemblyReference.cache
+.vs/DotnetCourse/xs/project-cache/DotnetCourse-Debug.json
