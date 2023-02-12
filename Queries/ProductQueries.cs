@@ -26,8 +26,25 @@ namespace DotnetCourse.Queries
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            var product = con.QueryFirst<Product>("SELECT * FROM dbo.Products WHERE id=@id",
-                new { id = id });
+            //the number of reviews
+            // average user rating for each product
+
+            var product = con.Query<Product>(
+              "SELECT \n" +
+              "    dbo.Products.Id,\n" +
+              "    dbo.Products.Name,\n" +
+              "    dbo.Products.MainImageUrl,\n" +
+              "    dbo.Products.Price,\n" +
+              "    AVG(dbo.Reviews.Rating) AS Rating\n" +
+              "    FROM dbo.Products\n" +
+              "    FULL JOIN dbo.Reviews\n" +
+              "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
+              "    WHERE dbo.Products.Id = @id \n" +
+              "    GROUP BY \n" +
+              "        dbo.Products.Id, \n" +
+              "        dbo.Products.Name,\n" +
+              "        dbo.Products.MainImageUrl,\n" +
+              "        dbo.Products.Price" , new { id = id });
 
             return product;
         }
@@ -39,7 +56,22 @@ namespace DotnetCourse.Queries
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            var products = con.Query<Product>("SELECT * FROM dbo.Products").ToList();
+            var products = con.Query<Product>(
+                "SELECT \n" +
+                "    dbo.Products.Id,\n" +
+                "    dbo.Products.Name,\n" +
+                "    dbo.Products.MainImageUrl,\n" +
+                "    dbo.Products.Price,\n" +
+                "    AVG(dbo.Reviews.Rating) AS Rating\n" +
+                "    FROM dbo.Products\n" +
+                "    FULL JOIN dbo.Reviews\n" +
+                "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
+                "    GROUP BY \n" +
+                "        dbo.Products.Id, \n" +
+                "        dbo.Products.Name,\n" +
+                "        dbo.Products.MainImageUrl,\n" +
+                "        dbo.Products.Price")
+                .ToList();
 
             return products;
         }
