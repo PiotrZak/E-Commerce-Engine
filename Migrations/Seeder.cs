@@ -66,9 +66,9 @@ public class ProductSeeder
             var imageUrls = foodImagesUrls[i] + " " + roomImagesUrls[i] + "" + attractionsImagesUrls[i];
             var location = _locations[random.Next(_locations.Length)];
             var price = random.Next(100, 500);
-            var rating = random.NextDouble() * 5;
+            var review = new List<Review>();
 
-            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, rating));
+            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review, 0));
         }
 
         return products;

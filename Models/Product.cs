@@ -5,7 +5,7 @@ namespace DotnetCourse.Models
     {
         public Product() { } // Default constructor added here // for migrations
 
-        public Product(Guid id, string name, string mainImageUrl, string imageUrls, string location, decimal price, double rating)
+        public Product(Guid id, string name, string mainImageUrl, string imageUrls, string location, decimal price, List<Review> review, int numberOfReviews)
         {
             Id = id;
             Name = name;
@@ -13,7 +13,8 @@ namespace DotnetCourse.Models
             ImageUrls = imageUrls;
             Location = location;
             Price = price;
-            Rating = rating;
+            Review = review;
+            NumberOfReview = numberOfReviews;
         }
 
 
@@ -23,7 +24,9 @@ namespace DotnetCourse.Models
         public string ImageUrls { get; set; }
         public string Location { get; set; }
         public decimal Price { get; set; }
-        public double Rating { get; set; }
+        public List<Review> Review { get; set; }
+        // handling number of reviews
+        public int NumberOfReview { get; set; }
     }
 }
 
