@@ -1,5 +1,6 @@
 ﻿using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 namespace DotnetCourse.Controllers;
 
@@ -16,7 +17,7 @@ public class SearchController : ControllerBase
     }
 
     [HttpGet("Search")]
-    public List<Product> SearchProduct(string searchPhrase)
+    public List<SearchViewModel> SearchProduct(string searchPhrase)
     {
         try
         {

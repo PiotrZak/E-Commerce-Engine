@@ -1,6 +1,7 @@
 ﻿using System;
 using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 
 namespace DotnetCourse.Services
 {
@@ -33,10 +34,17 @@ namespace DotnetCourse.Services
             return products;
         }
 
-        public List<Product> GetSearchProducts(string searchPhrase)
+        public List<SearchViewModel> GetSearchProducts(string searchPhrase)
         {
             var products = _productQueries.GetSearchProducts(searchPhrase);
-            return products;
+
+            var searchViewModel = products.Select(x => new SearchViewModel
+            {
+                Id = x.Id,
+                Name = x.Name
+            }).ToList();
+
+            return searchViewModel;
 
         }
     }

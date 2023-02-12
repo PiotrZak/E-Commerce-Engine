@@ -3,9 +3,8 @@ namespace DotnetCourse.ViewModels
 {
 	public class SearchViewModel
 	{
-		public SearchViewModel()
-		{
-		}
-	}
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+    }
 }
 

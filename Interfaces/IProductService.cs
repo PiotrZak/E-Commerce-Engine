@@ -1,5 +1,6 @@
 ﻿using System;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 
 namespace DotnetCourse.Interfaces
 {
@@ -17,7 +18,7 @@ namespace DotnetCourse.Interfaces
         List<Product> GetFilteredProducts(ProductFilters filteredProduct);
 
         // Get searched products
-        List<Product> GetSearchProducts(string searchPhrase);
+        List<SearchViewModel> GetSearchProducts(string searchPhrase);
 
     }
 
