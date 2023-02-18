@@ -1,5 +1,6 @@
 ﻿using System;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 
 namespace DotnetCourse.Interfaces
 {
@@ -8,10 +9,13 @@ namespace DotnetCourse.Interfaces
     {
 
         // Get one product
-        Product GetProduct(Guid id);
+        ProductMainViewModel GetProduct(Guid id);
 
-        // Get all products
-        List<Product> GetAllProducts();
+        // Get products for list
+        List<ProductListViewModel> GetProductList();
+
+        //// Get all products
+        //List<Product> GetAllProducts();
 
         // Get filtered products
         List<Product> GetFilteredProducts(ProductFilters filteredProduct);

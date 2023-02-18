@@ -483,3 +483,6 @@ obj/Debug/net7.0/DotnetCourse.csproj.AssemblyReference.cache
 obj/Debug/net7.0/apphost
 *.json
 .vs/DotnetCourse/xs/project-cache/DotnetCourse-Debug.json
+.vs/DotnetCourse/xs/project-cache/DotnetCourse-Debug.json
+DotnetCourse.csproj
+obj/Debug/net7.0/DotnetCourse.csproj.AssemblyReference.cache

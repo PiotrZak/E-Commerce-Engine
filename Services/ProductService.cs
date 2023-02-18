@@ -1,6 +1,7 @@
 ﻿using System;
 using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 
 namespace DotnetCourse.Services
 {
@@ -13,18 +14,16 @@ namespace DotnetCourse.Services
             _productQueries = productQueries;
         }
 
-
-        public Product GetProduct(Guid id)
+        public ProductMainViewModel GetMainProduct(Guid id)
         {
-            var product = _productQueries.GetProduct(id);
+            var product = _productQueries.GetProductMain(id);
             return product;
         }
 
-
-        public List<Product> GetAllProducts()
+        public ProductDetailsViewModel GetProductDetails(Guid id)
         {
-            var products = _productQueries.GetAllProducts();
-            return products;
+            var product = _productQueries.GetProductDetails(id);
+            return product;
         }
 
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
@@ -39,6 +38,18 @@ namespace DotnetCourse.Services
             return products;
 
         }
+
+        public List<ProductListViewModel> GetProductList()
+        {
+            var products = _productQueries.GetListProducts();
+            return products;
+        }
+
+        //public List<Product> GetAllProducts()
+        //{
+        //    var products = _productQueries.GetAllProducts();
+        //    return products;
+        //}
     }
 }
 

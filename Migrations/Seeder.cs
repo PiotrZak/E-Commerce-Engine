@@ -68,7 +68,7 @@ public class ProductSeeder
             var price = random.Next(100, 500);
             var review = new List<Review>();
 
-            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review, 0));
+            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review));
         }
 
         return products;
