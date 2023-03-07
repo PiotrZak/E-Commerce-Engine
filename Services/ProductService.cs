@@ -1,6 +1,7 @@
 ﻿using System;
 using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
+using DotnetCourse.Utils;
 
 namespace DotnetCourse.Services
 {
@@ -12,7 +13,6 @@ namespace DotnetCourse.Services
         {
             _productQueries = productQueries;
         }
-
 
         public Product GetProduct(Guid id)
         {
@@ -30,6 +30,7 @@ namespace DotnetCourse.Services
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {
             var products = _productQueries.GetFilteredProducts(filteredProduct);
+            Validation.ValidateFromToPrice(filteredProduct.PriceFrom, filteredProduct.PriceTo);
             return products;
         }
 
