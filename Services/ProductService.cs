@@ -14,7 +14,7 @@ namespace DotnetCourse.Services
             _productQueries = productQueries;
         }
 
-        public ProductMainViewModel GetMainProduct(Guid id)
+        public ProductMainViewModel GetProductMain(Guid id)
         {
             var product = _productQueries.GetProductMain(id);
             return product;
@@ -39,17 +39,11 @@ namespace DotnetCourse.Services
 
         }
 
-        public List<ProductListViewModel> GetProductList()
+        public List<ProductListViewModel> GetListProduct()
         {
             var products = _productQueries.GetListProducts();
             return products;
         }
-
-        //public List<Product> GetAllProducts()
-        //{
-        //    var products = _productQueries.GetAllProducts();
-        //    return products;
-        //}
     }
 }
 
