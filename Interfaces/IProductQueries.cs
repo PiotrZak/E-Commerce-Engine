@@ -1,12 +1,14 @@
 ﻿using System;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 
 namespace DotnetCourse.Interfaces
 {
 	public interface IProductQueries
 	{
-        Product GetProduct(Guid id);
-        List<Product> GetAllProducts();
+        ProductMainViewModel GetProductMain(Guid id);
+        ProductDetailsViewModel GetProductDetails(Guid id);
+        List<ProductListViewModel> GetListProducts();
         List<Product> GetFilteredProducts(ProductFilters filteredProduct);
         List<Product> GetSearchProducts(string searchPhrase);
 

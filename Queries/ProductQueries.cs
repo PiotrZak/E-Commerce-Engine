@@ -5,7 +5,6 @@ using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
 using DotnetCourse.ViewModels;
 using Microsoft.Data.SqlClient;
-using static System.Collections.Specialized.BitVector32;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace DotnetCourse.Queries
@@ -20,7 +19,7 @@ namespace DotnetCourse.Queries
             _configuration = configuration;
         }
 
-        public ProductMainViewModel GetMainProduct(Guid id)
+        public ProductMainViewModel GetProductMain(Guid id)
         {
             var connectionString = _configuration["ConnectionStrings:DBConnection"];
 
@@ -33,6 +32,7 @@ namespace DotnetCourse.Queries
               "    dbo.Products.Name,\n" +
               "    dbo.Products.MainImageUrl,\n" +
               "    dbo.Products.Price,\n" +
+              "    AVG(dbo.Reviews.Rating) AS Rating,\n" +
               "    COUNT(dbo.Reviews.Rating) As NumberOfReviews \n" +
               "    FROM dbo.Products\n" +
               "    FULL JOIN dbo.Reviews\n" +
@@ -60,7 +60,7 @@ namespace DotnetCourse.Queries
               "    dbo.Products.Name,\n" +
               "    dbo.Products.MainImageUrl,\n" +
               "    dbo.Products.ImageUrls,\n" +
-              "    dbo.Products.Price\n" +
+              "    dbo.Products.Price\n," +
               "    dbo.Products.Location As PreciseLocation\n" +
               "    FROM dbo.Products\n" +
               "    FULL JOIN dbo.Reviews\n" +
@@ -70,6 +70,8 @@ namespace DotnetCourse.Queries
               "        dbo.Products.Id, \n" +
               "        dbo.Products.Name,\n" +
               "        dbo.Products.MainImageUrl,\n" +
+              "        dbo.Products.ImageUrls,\n" +
+              "        dbo.Products.Location,\n" +
               "        dbo.Products.Price", new { id = id });
 
             return product;
@@ -104,11 +106,6 @@ namespace DotnetCourse.Queries
 
             return products;
         }
-
-        //public List<Product> GetAllProducts()
-        //{
-
-        //}
 
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {

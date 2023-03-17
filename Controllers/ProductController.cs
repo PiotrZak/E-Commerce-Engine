@@ -18,7 +18,7 @@ public class ProductController : ControllerBase
         _productService = productService;
     }
 
-    [HttpGet("GetProduct")]
+    [HttpGet("GetProductMain")]
     public ProductMainViewModel GetProductMain(Guid id)
     {
         try
@@ -28,7 +28,7 @@ public class ProductController : ControllerBase
                 throw new Exception("Id is empty");
             };
 
-            var data = _productService.GetMainProduct(id);
+            var data = _productService.GetProductMain(id);
 
             if (data == null)
             {
@@ -44,7 +44,7 @@ public class ProductController : ControllerBase
     }
 
 
-    [HttpGet("GetProduct")]
+    [HttpGet("GetProductDetails")]
     public ProductDetailsViewModel GetProductDetails(Guid id)
     {
         try
@@ -74,7 +74,7 @@ public class ProductController : ControllerBase
     {
         try
         {
-            var data = _productService.GetProductList();
+            var data = _productService.GetListProduct();
             return data;
         }
         catch (Exception exception)
@@ -82,18 +82,4 @@ public class ProductController : ControllerBase
             throw new Exception(exception.ToString());
         }
     }
-
-    //[HttpGet("GetProducts")]
-    //public List<Product> GetProducts()
-    //{
-    //    try
-    //    {
-    //        var data = _productService.GetAllProducts();
-    //        return data;
-    //    }
-    //    catch (Exception exception)
-    //    {
-    //        throw new Exception(exception.ToString());
-    //    }
-    //}
 }

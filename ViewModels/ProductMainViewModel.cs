@@ -10,7 +10,7 @@ namespace DotnetCourse.ViewModels
         public string MainImageUrl { get; set; }
         public string Location { get; set; }
         public decimal Price { get; set; }
-        public List<Review> Review { get; set; }
+        public decimal Rating { get; set; }
     }
 }
 

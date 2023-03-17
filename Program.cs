@@ -19,9 +19,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+// Product
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductQueries, ProductQueries>();
+
+// Review
+builder.Services.AddScoped<IReviewQueries, ReviewQueries>();
 
 var app = builder.Build();
 

@@ -9,13 +9,10 @@ namespace DotnetCourse.Interfaces
     {
 
         // Get one product
-        ProductMainViewModel GetProduct(Guid id);
+        ProductMainViewModel GetProductMain(Guid id);
 
         // Get products for list
-        List<ProductListViewModel> GetProductList();
-
-        //// Get all products
-        //List<Product> GetAllProducts();
+        List<ProductListViewModel> GetListProduct();
 
         // Get filtered products
         List<Product> GetFilteredProducts(ProductFilters filteredProduct);
@@ -23,6 +20,8 @@ namespace DotnetCourse.Interfaces
         // Get searched products
         List<Product> GetSearchProducts(string searchPhrase);
 
+        // Get Product Details
+        ProductDetailsViewModel GetProductDetails(Guid id);
     }
 
 }
