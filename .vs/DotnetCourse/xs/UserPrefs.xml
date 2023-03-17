@@ -1,47 +1,35 @@
 ﻿<Properties StartupConfiguration="{F8528F9F-7C59-4F01-A8F4-52F628AF696E}|Default">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Queries/ProductQueries.cs" relfile="Queries/ProductQueries.cs" line="29" column="1" />
-      <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Controllers/ProductController.cs" relfile="Controllers/ProductController.cs" line="29" column="1" />
-      <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Queries/ProductQueries.cs" relfile="Queries/ProductQueries.cs" line="28" column="1" />
-      <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Controllers/ProductController.cs" relfile="Controllers/ProductController.cs" line="27" column="1" />
-      <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Controllers/ProductController.cs" relfile="Controllers/ProductController.cs" line="26" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DotnetCourse PreferredExecutionTarget="/Applications/Safari.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ProductController.cs">
     <Files>
-      <File FileName="appsettings.json" Line="4" Column="21" IsPinned="True" />
-      <File FileName="Interfaces/IProductService.cs" Line="5" Column="2" />
-      <File FileName="Services/ProductService.cs" Line="15" Column="1" />
-      <File FileName="Controllers/ProductController.cs" Line="29" Column="35" />
-      <File FileName="Controllers/SearchController.cs" />
-      <File FileName="Models/ProductFilters.cs" />
-      <File FileName="Models/Product.cs" Line="11" Column="29" />
-      <File FileName="Queries/ProductQueries.cs" Line="30" Column="1" />
-      <File FileName="Interfaces/IProductQueries.cs" Line="8" Column="37" />
-      <File FileName="Properties/launchSettings.json" Line="16" Column="26" />
-      <File FileName="Program.cs" Line="14" Column="71" />
-      <File FileName="Migrations/Seeder.cs" Line="9" Column="22" />
-      <File FileName="Migrations/UnplashIntegrations.cs" Line="9" Column="31" />
+      <File FileName="Migrations/Seeder.cs" Line="69" Column="45" />
+      <File FileName="Queries/ProductQueries.cs" Line="47" Column="28" />
+      <File FileName="ViewModels/ProductDetailsViewModel.cs" Line="14" Column="31" />
+      <File FileName="Interfaces/IProductService.cs" Line="24" Column="44" />
+      <File FileName="Services/ProductService.cs" Line="27" Column="22" />
+      <File FileName="Interfaces/IProductQueries.cs" Line="10" Column="37" />
+      <File FileName="Utils/Validation.cs" Line="16" Column="14" />
+      <File FileName="Utils/Common.cs" Line="8" Column="41" />
+      <File FileName="../Tests/UnitTest1.cs" Line="14" Column="23" />
+      <File FileName="Controllers/ProductController.cs" Line="64" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DotnetCourse" expanded="True">
-            <Node name="DotnetCourse" expanded="True">
-              <Node name="Interfaces" expanded="True" />
-              <Node name="Migrations" expanded="True" />
-              <Node name="Models" expanded="True" />
-              <Node name="Queries" expanded="True" />
-              <Node name="Services" expanded="True" />
-            </Node>
+            <Node name="DotnetCourse" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.DotnetCourse PreferredExecutionTarget="/Applications/Safari.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Queries/ReviewQueries.cs" relfile="Queries/ReviewQueries.cs" line="54" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.Tests FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
