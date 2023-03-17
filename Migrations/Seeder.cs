@@ -5,6 +5,7 @@ using System.Linq;
 using DotnetCourse.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using System.Text.Json;
 
 public class ProductSeeder
 {
@@ -67,8 +68,16 @@ public class ProductSeeder
             var location = _locations[random.Next(_locations.Length)];
             var price = random.Next(100, 500);
             var review = new List<Review>();
+            var productDetailsDict = new Dictionary<string, string>()
+            {
+                { "icon", "value" },
+                { "icon2", "value2" },
+                { "icon3", "value3" },
+            };
 
-            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review));
+            string productDetailsString = System.Text.Json.JsonSerializer.Serialize(productDetailsDict);
+
+            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review, productDetailsString));
         }
 
         return products;

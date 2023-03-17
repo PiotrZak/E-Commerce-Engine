@@ -11,6 +11,18 @@ namespace DotnetCourse.ViewModels
         public string ImageUrls { get; set; }
         public string PreciseLocation { get; set; }
         public decimal Price { get; set; }
+        public Dictionary<string, string>? ProductDetails { get; set; }
+    }
+
+    public class ProductDetailsQueryModel
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string MainImageUrl { get; set; }
+        public string ImageUrls { get; set; }
+        public string PreciseLocation { get; set; }
+        public decimal Price { get; set; }
+        public string? ProductDetails { get; set; }
     }
 }
 

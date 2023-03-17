@@ -3,6 +3,7 @@ using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
 using DotnetCourse.ViewModels;
 using DotnetCourse.Utils;
+using System.Text.Json;
 
 namespace DotnetCourse.Services
 {
@@ -23,8 +24,23 @@ namespace DotnetCourse.Services
 
         public ProductDetailsViewModel GetProductDetails(Guid id)
         {
+            //ProductDetailsQueryModel
             var product = _productQueries.GetProductDetails(id);
-            return product;
+
+            var productDetailsDict = JsonSerializer.Deserialize<Dictionary<string, string>>(product.ProductDetails ?? "");
+
+            var productsViewModel = new ProductDetailsViewModel
+            {
+                Id = product.Id,
+                Name = product.Name,
+                MainImageUrl = product.MainImageUrl,
+                ImageUrls = product.ImageUrls,
+                PreciseLocation = product.PreciseLocation,
+                Price = product.Price,
+                ProductDetails = productDetailsDict,
+            };
+
+            return productsViewModel;
         }
 
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)

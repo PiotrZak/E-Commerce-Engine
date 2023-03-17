@@ -7,7 +7,7 @@ namespace DotnetCourse.Interfaces
 	public interface IProductQueries
 	{
         ProductMainViewModel GetProductMain(Guid id);
-        ProductDetailsViewModel GetProductDetails(Guid id);
+        ProductDetailsQueryModel GetProductDetails(Guid id);
         List<ProductListViewModel> GetListProducts();
         List<Product> GetFilteredProducts(ProductFilters filteredProduct);
         List<Product> GetSearchProducts(string searchPhrase);

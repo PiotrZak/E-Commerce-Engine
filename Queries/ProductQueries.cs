@@ -47,21 +47,22 @@ namespace DotnetCourse.Queries
             return product;
         }
 
-        public ProductDetailsViewModel GetProductDetails(Guid id)
+        public ProductDetailsQueryModel GetProductDetails(Guid id)
         {
             var connectionString = _configuration["ConnectionStrings:DBConnection"];
 
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            var product = con.QueryFirst<ProductDetailsViewModel>(
+            var product = con.QueryFirst<ProductDetailsQueryModel>(
               "SELECT \n" +
               "    dbo.Products.Id,\n" +
               "    dbo.Products.Name,\n" +
               "    dbo.Products.MainImageUrl,\n" +
               "    dbo.Products.ImageUrls,\n" +
               "    dbo.Products.Price\n," +
-              "    dbo.Products.Location As PreciseLocation\n" +
+              "    dbo.Products.Location As PreciseLocation\n," +
+              "    dbo.Products.ProductsDetails\n" +
               "    FROM dbo.Products\n" +
               "    FULL JOIN dbo.Reviews\n" +
               "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
