@@ -18,7 +18,7 @@ namespace DotnetCourse.Interfaces
         List<Product> GetFilteredProducts(ProductFilters filteredProduct);
 
         // Get searched products
-        List<Product> GetSearchProducts(string searchPhrase);
+        List<SearchViewModel> GetSearchProducts(string searchPhrase);
 
         // Get Product Details
         ProductDetailsViewModel GetProductDetails(Guid id);
