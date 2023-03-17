@@ -3,8 +3,8 @@ using System.Runtime.ConstrainedExecution;
 using Dapper;
 using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
+using DotnetCourse.ViewModels;
 using Microsoft.Data.SqlClient;
-using static System.Collections.Specialized.BitVector32;
 using static Microsoft.Extensions.Logging.EventSource.LoggingEventSource;
 
 namespace DotnetCourse.Queries
@@ -19,27 +19,90 @@ namespace DotnetCourse.Queries
             _configuration = configuration;
         }
 
-        public Product GetProduct(Guid id)
+        public ProductMainViewModel GetProductMain(Guid id)
         {
             var connectionString = _configuration["ConnectionStrings:DBConnection"];
 
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            var product = con.QueryFirst<Product>("SELECT * FROM dbo.Products WHERE id=@id",
-                new { id = id });
+            var product = con.QueryFirst<ProductMainViewModel>(
+              "SELECT \n" +
+              "    dbo.Products.Id,\n" +
+              "    dbo.Products.Name,\n" +
+              "    dbo.Products.MainImageUrl,\n" +
+              "    dbo.Products.Price,\n" +
+              "    AVG(dbo.Reviews.Rating) AS Rating,\n" +
+              "    COUNT(dbo.Reviews.Rating) As NumberOfReviews \n" +
+              "    FROM dbo.Products\n" +
+              "    FULL JOIN dbo.Reviews\n" +
+              "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
+              "    WHERE dbo.Products.Id = @id \n" +
+              "    GROUP BY \n" +
+              "        dbo.Products.Id, \n" +
+              "        dbo.Products.Name,\n" +
+              "        dbo.Products.MainImageUrl,\n" +
+              "        dbo.Products.Price" , new { id = id });
 
             return product;
         }
 
-        public List<Product> GetAllProducts()
+        public ProductDetailsViewModel GetProductDetails(Guid id)
         {
             var connectionString = _configuration["ConnectionStrings:DBConnection"];
 
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            var products = con.Query<Product>("SELECT * FROM dbo.Products").ToList();
+            var product = con.QueryFirst<ProductDetailsViewModel>(
+              "SELECT \n" +
+              "    dbo.Products.Id,\n" +
+              "    dbo.Products.Name,\n" +
+              "    dbo.Products.MainImageUrl,\n" +
+              "    dbo.Products.ImageUrls,\n" +
+              "    dbo.Products.Price\n," +
+              "    dbo.Products.Location As PreciseLocation\n" +
+              "    FROM dbo.Products\n" +
+              "    FULL JOIN dbo.Reviews\n" +
+              "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
+              "    WHERE dbo.Products.Id = @id \n" +
+              "    GROUP BY \n" +
+              "        dbo.Products.Id, \n" +
+              "        dbo.Products.Name,\n" +
+              "        dbo.Products.MainImageUrl,\n" +
+              "        dbo.Products.ImageUrls,\n" +
+              "        dbo.Products.Location,\n" +
+              "        dbo.Products.Price", new { id = id });
+
+            return product;
+        }
+
+        public List<ProductListViewModel> GetListProducts()
+        {
+            var connectionString = _configuration["ConnectionStrings:DBConnection"];
+
+            using var con = new SqlConnection(connectionString);
+            con.Open();
+
+            var products = con.Query<ProductListViewModel>(
+                "SELECT \n" +
+                "    dbo.Products.Id,\n" +
+                "    dbo.Products.Name,\n" +
+                "    dbo.Products.MainImageUrl,\n" +
+                "    dbo.Products.Price,\n" +
+                "    dbo.Products.Location,\n" +
+                "    AVG(dbo.Reviews.Rating) AS Rating,\n" +
+                "    COUNT(dbo.Reviews.Rating) As NumberOfReviews \n" +
+                "    FROM dbo.Products\n" +
+                "    FULL JOIN dbo.Reviews\n" +
+                "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
+                "    GROUP BY \n" +
+                "        dbo.Products.Id, \n" +
+                "        dbo.Products.Name,\n" +
+                "        dbo.Products.MainImageUrl,\n" +
+                "        dbo.Products.Location,\n" +
+                "        dbo.Products.Price")
+                .ToList();
 
             return products;
         }

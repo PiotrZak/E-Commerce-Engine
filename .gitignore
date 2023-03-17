@@ -475,6 +475,15 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+obj/project.nuget.cache
+obj/project.assets.json
+obj/DotnetCourse.csproj.nuget.dgspec.json
+obj/Debug/net7.0/DotnetCourse.csproj.CoreCompileInputs.cache
+obj/Debug/net7.0/DotnetCourse.csproj.AssemblyReference.cache
+obj/Debug/net7.0/apphost
+*.json
+.vs/DotnetCourse/xs/project-cache/DotnetCourse-Debug.json
+DotnetCourse.csproj
 obj/Debug/net7.0/DotnetCourse.csproj.AssemblyReference.cache
 .vs/DotnetCourse/xs/project-cache/DotnetCourse-Debug.json
 obj/project.nuget.cache
