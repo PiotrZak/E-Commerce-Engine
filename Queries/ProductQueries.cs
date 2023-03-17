@@ -99,20 +99,8 @@ namespace DotnetCourse.Queries
             using var con = new SqlConnection(connectionString);
             con.Open();
 
-            // todo
-            //System.Exception: Microsoft.Data.SqlClient.SqlException(0x80131904): Incorrect syntax near the keyword 'LIKE'.
-            // Unclosed quotation mark after the character string '%@searchPhrase%'.
-
-            // modify that query
-
-            var sql = "SELECT * FROM dbo.ProductsWHERE Name LIKE '%@searchPhrase%' OR Location LIKE '%@searchPhrase%";
-
-            var parameter = new
-            {
-                SearchPhrase = searchPhrase
-            };
-
-            var products = con.Query<Product>(sql, parameter).ToList();
+            var sql = "SELECT * FROM dbo.Products WHERE Name LIKE @searchPhrase OR Location LIKE @searchPhrase";
+            var products = con.Query<Product>(sql, new { searchPhrase = "%" + searchPhrase + "%"}).ToList();
 
             return products;
         }

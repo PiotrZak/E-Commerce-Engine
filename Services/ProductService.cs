@@ -1,6 +1,7 @@
 ﻿using System;
 using DotnetCourse.Interfaces;
 using DotnetCourse.Models;
+using DotnetCourse.Utils;
 
 namespace DotnetCourse.Services
 {
@@ -12,7 +13,6 @@ namespace DotnetCourse.Services
         {
             _productQueries = productQueries;
         }
-
 
         public Product GetProduct(Guid id)
         {
@@ -38,11 +38,7 @@ namespace DotnetCourse.Services
 
             var sortedProduct = new List<Product>();
 
-            // Define user Story
-            //if (filteredProduct.SortBy == SortProperty.ByPopularity)
-            //{
-            //    sortedProduct.OrderByDescending(x => x.Price);
-            //}
+            // Todo - Define popularity
 
             if (filteredProduct.SortBy == SortProperty.ByHighestPrice)
             {
@@ -54,7 +50,8 @@ namespace DotnetCourse.Services
                 sortedProduct = products.OrderBy(x => x.Price).ToList();
             }
 
-            return sortedProduct;
+            Validation.ValidateFromToPrice(filteredProduct.PriceFrom, filteredProduct.PriceTo);
+            return products;
         }
 
         public List<Product> GetSearchProducts(string searchPhrase)
