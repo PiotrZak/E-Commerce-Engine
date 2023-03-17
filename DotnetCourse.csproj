@@ -30,6 +30,7 @@
     <None Remove="Interfaces\" />
     <None Remove="Queries\" />
     <None Remove="Migrations\" />
+    <None Remove="ViewModels\" />
     <None Remove="Utils\" />
   </ItemGroup>
   <ItemGroup>
@@ -38,6 +39,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Queries\" />
     <Folder Include="Migrations\" />
+    <Folder Include="ViewModels\" />
     <Folder Include="Utils\" />
   </ItemGroup>
 </Project>
