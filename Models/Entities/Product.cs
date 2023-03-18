@@ -1,11 +1,13 @@
 ﻿using System;
+using DotnetCourse.Models.Entities;
+
 namespace DotnetCourse.Models
 {
     public class Product
     {
         public Product() { } // Default constructor added here // for migrations
 
-        public Product(Guid id, string name, string mainImageUrl, string imageUrls, string location, decimal price, List<Review> review)
+        public Product(Guid id, string name, string mainImageUrl, string imageUrls, string location, decimal price, List<Review> review, List<Reservation> reservation)
         {
             Id = id;
             Name = name;
@@ -14,6 +16,7 @@ namespace DotnetCourse.Models
             Location = location;
             Price = price;
             Review = review;
+            Reservation = reservation;
         }
 
 
@@ -24,6 +27,7 @@ namespace DotnetCourse.Models
         public string Location { get; set; }
         public decimal Price { get; set; }
         public List<Review> Review { get; set; }
+        public List<Reservation> Reservation { get; set; }
     }
 }
 

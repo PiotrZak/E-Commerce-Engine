@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Diagnostics;
 using DotnetCourse.Models;
+using DotnetCourse.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DotnetCourse.Migrations
 {
-	public class CourseDbContext : DbContext
-	{
-        public CourseDbContext(DbContextOptions<CourseDbContext> options) : base(options) {
+    public class CourseDbContext : DbContext
+    {
+        public CourseDbContext(DbContextOptions<CourseDbContext> options) : base(options)
+        {
             Database.EnsureCreated();
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -22,8 +25,17 @@ namespace DotnetCourse.Migrations
                 .WithOne(x => x.Product)
                 .IsRequired();
 
+
+            modelBuilder.Entity<Product>()
+                .HasMany(x => x.Reservation)
+                .WithOne(x => x.Product)
+                .IsRequired();
+
             // SEED Data
             var products = ProductSeeder.SeedAsync().Result;
+
+
+            modelBuilder.Entity<Reservation>();
             modelBuilder.Entity<Product>().HasData(products);
             modelBuilder.Entity<Review>()
                 .HasData(new Review

@@ -26,6 +26,9 @@ builder.Services.AddScoped<IProductQueries, ProductQueries>();
 // Review
 builder.Services.AddScoped<IReviewQueries, ReviewQueries>();
 
+// Reservation
+builder.Services.AddScoped<IReservationQueries, ReservationQueries>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

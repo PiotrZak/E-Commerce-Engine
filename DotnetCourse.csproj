@@ -32,6 +32,7 @@
     <None Remove="Migrations\" />
     <None Remove="ViewModels\" />
     <None Remove="Utils\" />
+    <None Remove="Models\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
@@ -41,5 +42,6 @@
     <Folder Include="Migrations\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Utils\" />
+    <Folder Include="Models\Entities\" />
   </ItemGroup>
 </Project>
