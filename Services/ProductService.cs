@@ -40,6 +40,10 @@ namespace DotnetCourse.Services
         public ProductDetailsViewModel GetProductDetails(Guid id)
         {
             var product = _productQueries.GetProductDetails(id);
+
+            var currency = UserCurrency.GetCurrency();
+            var productPrice = product.Price + currency;
+
             return product;
         }
 
