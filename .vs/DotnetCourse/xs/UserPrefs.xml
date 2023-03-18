@@ -7,30 +7,35 @@
       <Breakpoint file="/Users/macbook/Desktop/DotnetCourse/Queries/ReviewQueries.cs" relfile="Queries/ReviewQueries.cs" line="54" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Migrations/CourseDbContextModelSnapshot.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Migrations/20230318171308_Test2.cs">
     <Files>
-      <File FileName="Migrations/Seeder.cs" Line="46" Column="41" />
+      <File FileName="Migrations/Seeder.cs" Line="70" Column="43" />
       <File FileName="Queries/ProductQueries.cs" Line="22" Column="51" />
-      <File FileName="ViewModels/ProductDetailsViewModel.cs" />
-      <File FileName="Interfaces/IProductService.cs" />
-      <File FileName="Services/ProductService.cs" Line="29" Column="41" />
-      <File FileName="Interfaces/IProductQueries.cs" />
-      <File FileName="Utils/Validation.cs" />
-      <File FileName="Controllers/ProductController.cs" Line="64" Column="25" />
-      <File FileName="ViewModels/ProductMainViewModel.cs" Line="9" Column="41" />
+      <File FileName="ViewModels/ProductDetailsViewModel.cs" Line="1" Column="1" />
+      <File FileName="Interfaces/IProductService.cs" Line="15" Column="44" />
+      <File FileName="Services/ProductService.cs" Line="23" Column="1" />
+      <File FileName="Interfaces/IProductQueries.cs" Line="1" Column="1" />
+      <File FileName="Utils/Validation.cs" Line="1" Column="1" />
+      <File FileName="Controllers/ProductController.cs" />
+      <File FileName="ViewModels/ProductMainViewModel.cs" />
       <File FileName="Migrations/CourseDbContext.cs" Line="1" Column="1" />
       <File FileName="Migrations/CourseDbContextModelSnapshot.cs" Line="14" Column="22" />
+      <File FileName="Migrations/20230318170134_Test.cs" Line="535" Column="670" />
+      <File FileName="Utils/StringOperations.cs" Line="11" Column="24" />
+      <File FileName="Migrations/20230318171308_Test2.cs" Line="531" Column="695" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="DotnetCourse" expanded="True">
             <Node name="DotnetCourse" expanded="True">
+              <Node name="Interfaces" expanded="True" />
               <Node name="Migrations" expanded="True">
-                <Node name="CourseDbContextModelSnapshot.cs" selected="True" />
+                <Node name="20230318171308_Test2.cs" selected="True" />
               </Node>
               <Node name="Queries" expanded="True" />
               <Node name="Services" expanded="True" />
+              <Node name="Utils" expanded="True" />
               <Node name="ViewModels" expanded="True" />
             </Node>
           </Node>

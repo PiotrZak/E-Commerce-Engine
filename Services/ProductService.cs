@@ -20,7 +20,6 @@ namespace DotnetCourse.Services
             var product = _productQueries.GetProductMain(id);
             product.Location = StringOperations.GetCountryAndCity(product.Location);
 
-
             return product;
         }
 
