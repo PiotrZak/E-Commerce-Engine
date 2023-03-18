@@ -18,7 +18,23 @@ namespace DotnetCourse.Services
         public ProductMainViewModel GetProductMain(Guid id)
         {
             var product = _productQueries.GetProductMain(id);
+            product.Location = StringOperations.GetCountryAndCity(product.Location);
+
+
             return product;
+        }
+
+        public List<ProductListViewModel> GetListProduct()
+        {
+            var products = _productQueries.GetListProducts();
+
+            foreach(var product in products)
+            {
+                //bit complexity of the operation
+                product.Location = StringOperations.GetCountryAndCity(product.Location);
+
+            }
+            return products;
         }
 
         public ProductDetailsViewModel GetProductDetails(Guid id)
@@ -66,12 +82,6 @@ namespace DotnetCourse.Services
 
             return searchViewModel;
 
-        }
-
-        public List<ProductListViewModel> GetListProduct()
-        {
-            var products = _productQueries.GetListProducts();
-            return products;
         }
     }
 }

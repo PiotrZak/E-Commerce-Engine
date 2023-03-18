@@ -32,6 +32,7 @@ namespace DotnetCourse.Queries
               "    dbo.Products.Name,\n" +
               "    dbo.Products.MainImageUrl,\n" +
               "    dbo.Products.Price,\n" +
+              "    dbo.Products.Location,\n" +
               "    AVG(dbo.Reviews.Rating) AS Rating,\n" +
               "    COUNT(dbo.Reviews.Rating) As NumberOfReviews \n" +
               "    FROM dbo.Products\n" +
@@ -42,6 +43,7 @@ namespace DotnetCourse.Queries
               "        dbo.Products.Id, \n" +
               "        dbo.Products.Name,\n" +
               "        dbo.Products.MainImageUrl,\n" +
+              "        dbo.Products.Location,\n" +
               "        dbo.Products.Price" , new { id = id });
 
             return product;

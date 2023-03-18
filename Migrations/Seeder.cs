@@ -20,7 +20,10 @@ public class ProductSeeder
         "The Banyan Tree Hotel", "The Mandarin Oriental Hotel", "The Oberoi Hotel", "The Mandarin Oriental Hotel",
         "The Rosewood Hotel", "The Belmond Hotel", "The Aman Hotel", "The Banyan Tree Hotel"
     };
-    private static readonly string[] _locations = { "Paris", "New York", "London", "Tokyo", "Sydney" };
+
+    private static readonly string[] _Cities = { "Paris", "New York", "London", "Tokyo", "Sydney" };
+    private static readonly string[] _Country = { "France", "USA", "English", "Japan" };
+    private static readonly string[] _Address = { "15 street 20", "13 street, 302", "Street 13 20" };
     private static readonly string[] _imageUrls = { "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg" };
 
     public static async Task<List<Product>> SeedAsync()
@@ -64,7 +67,10 @@ public class ProductSeeder
             var name = _names[random.Next(_names.Length)];
             var mainImageUrl = mainImagesUrls[i];
             var imageUrls = foodImagesUrls[i] + " " + roomImagesUrls[i] + "" + attractionsImagesUrls[i];
-            var location = _locations[random.Next(_locations.Length)];
+            var location = (_Country[random.Next(_Country.Length)] + ", " +
+                            _Cities[random.Next(_Cities.Length)] + ", " +
+                            _Address[random.Next(_Address.Length)])
+                            .ToString();
             var price = random.Next(100, 500);
             var review = new List<Review>();
 
