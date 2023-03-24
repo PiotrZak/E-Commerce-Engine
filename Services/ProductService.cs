@@ -29,6 +29,7 @@ namespace DotnetCourse.Services
 
         public List<Product> GetFilteredProducts(ProductFilters filteredProduct)
         {
+            Validation.ValidateFromToPrice(filteredProduct.PriceFrom, filteredProduct.PriceTo);
             var products = _productQueries.GetFilteredProducts(filteredProduct);
 
             if (filteredProduct.SortBy == null)
@@ -37,8 +38,6 @@ namespace DotnetCourse.Services
             }
 
             var sortedProduct = new List<Product>();
-
-            // Todo - Define popularity
 
             if (filteredProduct.SortBy == SortProperty.ByHighestPrice)
             {
@@ -50,8 +49,7 @@ namespace DotnetCourse.Services
                 sortedProduct = products.OrderBy(x => x.Price).ToList();
             }
 
-            Validation.ValidateFromToPrice(filteredProduct.PriceFrom, filteredProduct.PriceTo);
-            return products;
+            return sortedProduct;
         }
 
         public List<SearchViewModel> GetSearchProducts(string searchPhrase)

@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <AssemblyName>Desktop</AssemblyName>
+    <ContainerImageName>dotnetcourse</ContainerImageName>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
@@ -20,6 +21,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="0.3.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
@@ -33,6 +35,8 @@
     <None Remove="ViewModels\" />
     <None Remove="Utils\" />
     <None Remove="Models\Entities\" />
+    <None Remove="Dockerfile" />
+    <None Remove="docker-compose.yml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

@@ -1,0 +1,34 @@
+﻿version: '3.8'
+services:
+  api:
+    image: dotnetcourse:1.0.0
+    container_name: api
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    networks:
+      my_network:
+        aliases:
+          - api
+  db:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: myDB
+    ports:
+      - "1435:1433"
+    environment:
+        - DB_SERVER=db
+        - ACCEPT_EULA=Y
+        - SA_PASSWORD=1aW2345678
+        - MSSQL_DB_NAME=myDB
+        - MSSQL_PID=Developer
+    volumes:
+      - ./data:/var/lib/mysql
+    networks:
+      my_network:
+        aliases:
+          - db
+    
+networks:
+  my_network:
+    driver: bridge

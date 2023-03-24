@@ -38,11 +38,13 @@ namespace DotnetCourse.Queries
               "    FULL JOIN dbo.Reviews\n" +
               "    ON dbo.Products.Id = dbo.Reviews.ProductId\n" +
               "    WHERE dbo.Products.Id = @id \n" +
+              //   WHERE dbo.Products.Id IN (ids)
               "    GROUP BY \n" +
               "        dbo.Products.Id, \n" +
               "        dbo.Products.Name,\n" +
               "        dbo.Products.MainImageUrl,\n" +
               "        dbo.Products.Price" , new { id = id });
+            //"        dbo.Products.Price" , new { ids = id });
 
             return product;
         }
@@ -141,13 +143,6 @@ namespace DotnetCourse.Queries
             {
                 sql += "AND Price < @PriceTo ";
                 filteredParameters.Add("PriceTo", filteredProduct.PriceTo);
-            }
-
-
-            if (filteredProduct.Rating != null)
-            {
-                sql += "AND Rating = @Rating ";
-                filteredParameters.Add("Rating", filteredProduct.Rating);
             }
 
             var products = con.Query<Product>(sql, filteredParameters).ToList();

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DotnetCourse.Models;
+using DotnetCourse.Models.Entities;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
@@ -67,8 +68,9 @@ public class ProductSeeder
             var location = _locations[random.Next(_locations.Length)];
             var price = random.Next(100, 500);
             var review = new List<Review>();
+            var reservation = new List<Reservation>();
 
-            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review));
+            products.Add(new Product(id, name, mainImageUrl, imageUrls, location, price, review, reservation));
         }
 
         return products;

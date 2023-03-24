@@ -8,7 +8,10 @@ using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 var connectionString = builder.Configuration["ConnectionStrings:DBConnection"];
+
+Console.WriteLine("ConnectionString is: " + connectionString);
 
 // Register your DbContext
 builder.Services.AddDbContext<CourseDbContext>(options =>
@@ -37,8 +40,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
+
